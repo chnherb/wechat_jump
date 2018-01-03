@@ -51,9 +51,6 @@ def _get_screen_size():
         height = m.group(2)
         return "{height}x{width}".format(height=height, width=width)
 
-
-
-
 def pull_screenshot():
     process = subprocess.Popen('adb shell screencap -p', shell=True, stdout=subprocess.PIPE)
     screenshot = process.stdout.read()
@@ -270,7 +267,6 @@ def find_piece_and_board(im):
 
     return piece_x, piece_y, board_x, new_board_y
 
-
 def dump_device_info():
     size_str = os.popen('adb shell wm size').read()
     device_str = os.popen('adb shell getprop ro.product.model').read()
@@ -284,16 +280,12 @@ def dump_device_info():
     #         python=sys.version
     # ))
 
-
 def check_adb():
     flag = os.system('adb devices')
     if flag == 1:
         print('Please install ADB and configure environment variables')
         x = input('Press any key to exit')
         sys.exit()
-
-
-
 
 def main():
 
@@ -341,11 +333,6 @@ if __name__ == '__main__':
         else:
             swipe = {}
             swipe['x1'], swipe['y1'], swipe['x2'], swipe['y2'] = 320, 410, 320, 410
-
-
-        # screenshot_backup_dir = 'screenshot_backups/'
-        # if not os.path.isdir(screenshot_backup_dir):
-        #     os.mkdir(screenshot_backup_dir)
 
         main()
     except Exception as e:
